@@ -1,0 +1,60 @@
+TAGS USADAS 
+    <h1> = Usada em títulos
+    <p> = Usada para paragráfos
+    <strong> = Negrito
+    <i> = Textos italicos
+    <br> = Pular linhas
+
+TAG DE MARCAÇÃO
+    <main> = Para criar a estrutura dentro da tag <body>
+    <footer> = Tag para criar rodapé
+    <section> = Dividir o código
+    <div> = Dovofor o código
+    <img> = Tag para imagens
+    
+
+COMENTARIOS
+    <!--meu comentario-->
+    #
+    //
+    //
+
+    let currentPageIndex = 0;
+
+// Passo 3 - Selecão dos documentos DOM
+const imgElement = document.getElementById ("manga-page");
+const btnPrev = document.getElementById ("btn-prev");
+const bntNext = document.getElementById ("btn-next")
+const pageCouter = document.getElementById ("page-counter");
+
+// Passo 4 - Funções para atualizar a tela
+function updateReader() {
+    // Passo 1 - Atualizar imagem
+    imgElement.src = pages [currentPageIndex];
+
+    // Passo 2 - Atualizar o texto do contador
+    pageCouter.textContent = `Pagina ${currentPageIndex + 1} de ${pages.length}`;
+
+    // Passo 3 - Controlar o estado dos botões
+    btnPrev.disabled = currentPageIndex === 0;
+    bntNext.disabled = currentPageIndex === pages.length - 1; 
+}
+
+// Passo 5 - Cliques no botão
+// Botão Anterior
+btnPrev.addEventListener("click", () => {
+    if (currentPageIndex > 0) {
+        currentPageIndex--;
+        updateReader()
+    }
+})
+
+// Botão Próximo
+bntNext.addEventListener("click", () => {
+    if (currentPageIndex < pages.length - 1) {
+        currentPageIndex++;
+        updateReader()
+    }
+})
+
+updateReader();
